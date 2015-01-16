@@ -6,9 +6,9 @@ A bundle based zshell framework.
 <pre>
 <code>
 % git clone https://github.com/HyperWind/Zeesh ~/.zeesh
-% mkdir ~/.zeesh/bundles
 </code>
 </pre>
+
 
 And add these following lines into your .zshrc file:
 
