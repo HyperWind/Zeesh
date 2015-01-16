@@ -73,6 +73,7 @@ zeesh_bundler() {
 	# sets the bundle dir
 
 	BUNDLE="$ROOT_DIR/bundles/$1"
+	zeesh_debug "$BUNDLE"
 
 	# checks for exceptions
 

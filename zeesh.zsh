@@ -44,7 +44,7 @@ zeesh_init() {
 		return 109
 	fi
 	
-	readonly ROOT_DIR=$1
+	export readonly ROOT_DIR=$1
 
 	zeesh_message "loading zeesh in $ROOT_DIR"	
 	if [[ "$ROOT_DIR" != "$HOME/.zeesh" ]]; then
