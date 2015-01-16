@@ -56,7 +56,7 @@ You can also place this command into autoexec.zsh for it to execute automaticall
 
 <h2>autoexec.zsh</h2>
 
-autoexec.zsh is part of zeesh's core, everything in it is executed after loading the bundles. It's mainly used to load the bundles and other configurations. 
+autoexec.zsh is part of zeesh's core, everything in it is executed after loading other components. It's mainly used to load the bundles and other configurations. 
 Every autoexec.zsh file is personal, so they shuold remain on your machine.
 Also, zeesh doesn't arrive with a autoexec.zsh file, you should make one yourself.
 
@@ -85,7 +85,7 @@ and so on.
 
 <h2>Oh-My-Zsh compatibility</h2>
 
-Zeesh is compatible with Oh-My-Zsh, if you want to use omz's themes/plugins/libs just clone Oh-My-Zsh into the bundle folder.
+Zeesh is compatible with Oh-My-Zsh, if you want to use omz's themes/plugins/libs just clone Oh-My-Zsh into the bundle folder and call it in your autoexec.zsh file or after zeesh has loaded everything in.
 
 <pre>
 <code>
