@@ -1,0 +1,7 @@
+# Custom files
+autoexec.zsh
+
+# Build and Relese Folders
+bundles/*
+
+
