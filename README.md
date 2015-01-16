@@ -33,7 +33,7 @@ autoload -U colors && colors
 
 Zeesh is bundle based, so everything other than the core will be situated in a bundle.
 
-To create a bundle make a new directory in the bundles folder (not name spcific), inside add three more folders named <em>themes</em>, <em>lib</em> and <em>plugins</em> and place the respective files into these folders.
+To create a bundle make a new directory in the bundles folder (not name specific), inside add three more folders named <em>themes</em>, <em>lib</em> and <em>plugins</em> and place the respective files into these folders.
 
 <pre>
 <code>
@@ -44,7 +44,36 @@ To create a bundle make a new directory in the bundles folder (not name spcific)
 </code>
 </pre>
 
+To load a bundle use this command:
 
+<pre>
+<code>
+zeesh_bundler "bundle_name" "plugin_1 plugin_2 etc." "theme"
+</pre>
+</code>
+
+You can also place this command into autoexec.zsh fot it to execute automatically upon finishing loading.
+
+<h2>autoexec.zsh</h2>
+
+autoexec.zsh is part of zeesh's core, everything in it is executed after loading the bundles. It's mainly used to load the bundles and other configurations. 
+Every autoexec.zsh file is personal, so they shuold remain on your machine.
+Also, zeesh doesn't arrive with a autoexec.zsh file, you should make one yourself.
+
+A simple configuration of an autoexec.zsh file would look like this:
+
+<pre>
+<code>
+# autoexec.zsh
+zeesh_bundler "bundle_1" "plugin_1 plugin_2" "theme"
+zeesh_bundler "bundle_3" "plugin_2 plugin_8" ""
+
+custom_function
+other_function
+</code>
+</pre>
+
+and so on.
 
 <h2>Zeesh Verbosity</h2>
 
@@ -56,7 +85,7 @@ To create a bundle make a new directory in the bundles folder (not name spcific)
 
 <h2>Oh-My-Zsh compatibility</h2>
 
-Zeesh is compatible with Oh-My-Zsh, if you want to use omz's themes/plugins/libs just clone it into the bundle folder.
+Zeesh is compatible with Oh-My-Zsh, if you want to use omz's themes/plugins/libs just clone Oh-My-Zsh into the bundle folder.
 
 <pre>
 <code>
@@ -64,3 +93,22 @@ Zeesh is compatible with Oh-My-Zsh, if you want to use omz's themes/plugins/libs
 % git clone https://github.com/robbyrussell/oh-my-zsh
 </code>
 </pre>
+
+<h2>Known Bugs</h2>
+
+<ul>
+<li>Calling <code>zeesh_bundler</code> only works from autoexec.zsh.</li>
+<li>Inline functions in the PROMPT variable sometimes don't work.</li>
+</ul>
+
+<h2>To Be Implamented</h2>
+
+<ul>
+<li>Individual optional init.zsh files for every bundle.</li>
+<li>An expansive default bundle.</li>
+</ul>
+
+<h2>Contribution</h2>
+
+Contributors should follow the coding style of set by the surrounding code.
+Aligning with spaces, indentation - tabs.
