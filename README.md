@@ -97,7 +97,6 @@ Zeesh is compatible with Oh-My-Zsh, if you want to use omz's themes/plugins/libs
 <h2>Known Bugs</h2>
 
 <ul>
-<li>Calling <code>zeesh_bundler</code> only works from autoexec.zsh.</li>
 <li>Inline functions in the PROMPT variable sometimes don't work.</li>
 </ul>
 
