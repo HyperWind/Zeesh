@@ -58,7 +58,7 @@ You can also place this command into autoexec.zsh for it to execute automaticall
 
 autoexec.zsh is part of zeesh's core, everything in it is executed after loading other components. It's mainly used to load the bundles and other configurations. 
 Every autoexec.zsh file is personal, so they shuold remain on your machine.
-Also, zeesh doesn't arrive with a autoexec.zsh file, you should make one yourself.
+Also, zeesh doesn't arrive with an autoexec.zsh file, you should make one yourself.
 
 A simple configuration of an autoexec.zsh file would look like this:
 
