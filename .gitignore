@@ -1,7 +1,7 @@
 # Custom files
 autoexec.zsh
 
-# Build and Relese Folders
+# Folders
 bundles/*
-
+!bundles/default
 
