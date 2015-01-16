@@ -52,7 +52,7 @@ zeesh_bundler "bundle_name" "plugin_1 plugin_2 etc." "theme"
 </pre>
 </code>
 
-You can also place this command into autoexec.zsh fot it to execute automatically upon finishing loading.
+You can also place this command into autoexec.zsh for it to execute automatically upon finishing loading.
 
 <h2>autoexec.zsh</h2>
 
