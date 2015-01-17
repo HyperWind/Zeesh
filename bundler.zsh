@@ -18,7 +18,7 @@ Other details:
     If you pass 'random' as an argument to the theme option, it'll select a random theme from that bundle.
     The libs option doesn't take any arguments.
     The plugins option takes a string as an argument.
-    Put an * in plugins option to load everything."
+    Put an * in the plugins option to load everything."
 }
 
 # loads themes
