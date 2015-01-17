@@ -1,5 +1,27 @@
 # zeesh bundler
 
+# bundler help
+
+bundler_help() {
+	zeesh_message "zeesh bundler help"
+	echo "\nUsage:
+    zeesh_bunder [-option] [arguments]
+
+Options:
+    -h              Prints this message.
+    -b, --bundle    Bundle name.
+    -t, --theme     Your desired theme.
+    -p, --plugins   Your desired plugins.
+    -l, --libs      Loads libs form that bundle.
+
+Other details:
+    The first option that should be called is -b (--bundle).
+    If you pass 'random' as an argument to the theme option, it'll select a random theme from that bundle.
+    The libs option doesn't take any arguments.
+    The plugins option takes a string as an argument.
+    Put a * in plugins option to load everything.\n"
+}
+
 # loads themes
 
 load_themes() {
@@ -7,12 +29,13 @@ load_themes() {
 
 	if [[ $1 == "random" ]]; then
 		zeesh_debug "using random theme"
-		local themes=($BUNDLE/themes/*.zsh-theme)
+		themes=($BUNDLE/themes/*.zsh-theme)
 		local n=${#themes[@]}
-		((n=(RANDOM%n)+1))
+		n=$RANDOM%$n+1
 		local rand_theme=$themes[$n]
-		source $rand_theme
+		zeesh_debug "$themes[$n]"
 		zeesh_message "$BUNDLE:t - loaded random theme $rand_theme"
+		source "$rand_theme"
 	else
 		if [[ ! -z $1 ]] && [[ -e "$BUNDLE/themes/$1.zsh-theme" ]]; then
 			zeesh_debug "file $1.zsh-theme found"
@@ -20,6 +43,7 @@ load_themes() {
 			zeesh_message "$BUNDLE:t - loaded theme $1"
 		else
 			zeesh_warning "$BUNDLE:t - theme $1 not found, using default values"
+			PROMPT="%~ > "
 		fi
 	fi
 }
@@ -39,7 +63,7 @@ load_plugins() {
 					source $BUNDLE/plugins/$plugin/$plugin.plugin.zsh
 				fi
 			else
-				zeesh_warning "$BUNDLE:t - $plugin isn't zeesh/oh-my-zshell compatable"
+				zeesh_warning "$BUNDLE:t - $plugin isn't zeesh/oh-my-zshell compatable or wasn't found"
 			fi
 		done
 			zeesh_message "$BUNDLE:t - plugins loaded"
@@ -69,48 +93,36 @@ load_libs() {
 
 zeesh_bundler() {
 
-	# sets the bundle dir
+	args=("$@")
 
-	BUNDLE="$ROOT_DIR/bundles/$1"
-	zeesh_debug "$BUNDLE"
+	zeesh_debug "$args[*]"
 
-	# checks for exceptions
-
-	if [[ ! -d $BUNDLE ]]; then
-		zeesh_error "bundle $BUNDLE:t not found"
-		return 110
-	fi
-
-	if [[ ! -d "$BUNDLE/lib" ]]; then
-		zeesh_error "configs folder not found in bundle $BUNDLE:t (broken bundle?)"
-		return 111
-	fi
-
-	if [[ ! -d "$BUNDLE/plugins" ]]; then
-		zeesh_error "plugins folder not found in bundle $BUNDLE:t (broken bundle?)"
-		return 112
-	fi
-
-	if [[ ! -d "$BUNDLE/themes" ]]; then
-		zeesh_error "themes folder not found in bundle $BUNDLE:t (broken bundle?)"
-		return 113
-	fi
-
-	zeesh_message "loading bundle $BUNDLE:t"
-
-	# loads everything
-
-	load_libs
-
-	if [[ -z "$2" ]]; then
-		zeesh_warning "plugins from this bundle won't be loaded"     
-	else
-		load_plugins $2
-	fi
-
-	if [[ -z "$3" ]]; then
-		zeesh_warning "a theme from this bundle won't be loaded"
-	else
-		load_themes $3
-	fi
+	[[ -z "$args[*]" ]] && zeesh_error "zeesh_bundler -h for help"
+	
+	for ((n=1; n<${#args}+1; n++)); do
+		zeesh_debug "$args[$n]"
+		case $args[$n] in
+			-h)
+				bundler_help
+				return 110
+				;;
+			--bundle|-b) # sets the bundle directory
+				if [[ -d "$ROOT_DIR/bundles/$args[$n+1]" ]]; then
+					BUNDLE="$ROOT_DIR/bundles/$args[$n+1]"
+				else
+					zeesh_error "bundle $args[$n+1] not found"
+					return 111
+				fi
+				;;
+			--theme|-t) # sets the theme
+				load_themes $args[$n+1]
+				;;
+			--plugins|-p)	# loads the plugins
+				load_plugins $args[$n+1]
+				;;
+			--libs|-l)	# loads the libs
+				load_libs
+				;;
+		esac	
+	done
 }

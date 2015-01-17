@@ -4,5 +4,3 @@ ZSH_THEME_GIT_PROMPT_PREFIX="{"
 ZSH_THEME_GIT_PROMPT_SUFFIX="} "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%} dirty%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} clean%{$reset_color%}"
-
-# currently the $(gir_prompt_info) function doesn't work.

@@ -1,5 +1,5 @@
 <h1>Zeesh</h1>
-A bundle based zshell framework.
+<b>A bundle based zshell framework.</b>
 
 <h2>Installation</h2>
 
@@ -48,17 +48,31 @@ To load a bundle use this command:
 
 <pre>
 <code>
-zeesh_bundler "bundle_name" "plugin_1 plugin_2 etc." "theme"
+zeesh_bundler -b bundle_name -p "plugins" -t theme -l
 </pre>
 </code>
 
-You can also place this command into autoexec.zsh for it to execute automatically upon finishing loading.
+You can also place this command into autoexec.zsh for it to be executed automatically.
+
+More on the usage of zeesh_bundler can be found using this command:
+
+<pre>
+<code>
+zeesh_bundler -h
+</pre>
+</code>
 
 <h2>autoexec.zsh</h2>
 
 autoexec.zsh is part of zeesh's core, everything in it is executed after loading other components. It's mainly used to load the bundles and other configurations. 
 Every autoexec.zsh file is personal, so they shuold remain on your machine.
 Also, zeesh doesn't arrive with an autoexec.zsh file, you should make one yourself.
+
+<pre>
+<code>
+% your_editor_of_choice ~/.zeesh/autoexec.zsh
+</code>
+</pre>
 
 A simple configuration of an autoexec.zsh file would look like this:
 
