@@ -4,7 +4,7 @@
 
 bundler_help() {
 	zeesh_message "zeesh bundler help"
-	echo "\nUsage:
+	printf "\nUsage:
     zeesh_bunder [-option] [arguments]
 
 Options:
