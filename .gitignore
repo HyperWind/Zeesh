@@ -3,5 +3,5 @@ autoexec.zsh
 
 # Folders
 bundles/*
-!bundles/default
+!bundles/example
 
