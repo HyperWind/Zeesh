@@ -111,7 +111,7 @@ Zeesh is compatible with Oh-My-Zsh, if you want to use omz's themes/plugins/libs
 <h2>Known Bugs</h2>
 
 <ul>
-<li>Inline functions in the PROMPT variable sometimes don't work.</li>
+<li>Fails to load theme upon initialization.</li>
 </ul>
 
 <h2>To Be Implamented</h2>
