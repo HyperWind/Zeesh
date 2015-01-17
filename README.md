@@ -49,8 +49,8 @@ To load a bundle use this command:
 <pre>
 <code>
 zeesh_bundler -b bundle_name -p "plugins" -t theme -l
-</pre>
 </code>
+</pre>
 
 You can also place this command into autoexec.zsh for it to be executed automatically.
 
@@ -59,8 +59,8 @@ More on the usage of zeesh_bundler can be found using this command:
 <pre>
 <code>
 zeesh_bundler -h
-</pre>
 </code>
+</pre>
 
 <h2>autoexec.zsh</h2>
 
