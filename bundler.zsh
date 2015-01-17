@@ -4,7 +4,7 @@
 
 bundler_help() {
 	zeesh_message "zeesh bundler help"
-	printf "\nUsage:
+	printf "Usage:
     zeesh_bunder [-option] [arguments]
 
 Options:
@@ -15,11 +15,10 @@ Options:
     -l, --libs      Loads libs form that bundle.
 
 Other details:
-    The first option that should be called is -b (--bundle).
     If you pass 'random' as an argument to the theme option, it'll select a random theme from that bundle.
     The libs option doesn't take any arguments.
     The plugins option takes a string as an argument.
-    Put a * in plugins option to load everything.\n"
+    Put an * in plugins option to load everything."
 }
 
 # loads themes
@@ -101,6 +100,9 @@ zeesh_bundler() {
 	zeesh_debug "$args[*]"
 
 	[[ -z "$args[*]" ]] && zeesh_error "zeesh_bundler -h for help"
+	[[ ! -z "$libs" ]] && libs=""
+    [[ ! -z "$plugins" ]] && plugins=""
+    [[ ! -z "$theme" ]] && theme=""
 	
 	for ((n=1; n<${#args}+1; n++)); do
 		zeesh_debug "$args[$n]"
@@ -118,14 +120,22 @@ zeesh_bundler() {
 				fi
 				;;
 			--theme|-t) # sets the theme
-				load_themes $args[$n+1]
+				theme=$args[$n+1]
 				;;
 			--plugins|-p)	# loads the plugins
-				load_plugins $args[$n+1]
+				plugins=$args[$n+1]
 				;;
 			--libs|-l)	# loads the libs
-				load_libs
+				libs="true"
 				;;
 		esac	
 	done
+
+	zeesh_debug "$plugins"
+	zeesh_debug "$theme"
+
+	[[ ! -z "$libs" ]] && load_libs
+	[[ ! -z "$plugins" ]] && load_plugins $plugins
+	[[ ! -z "$theme" ]] && load_themes $theme
+	
 }
