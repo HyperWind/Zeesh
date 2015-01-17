@@ -37,10 +37,10 @@ To create a bundle make a new directory in the bundles folder (not name specific
 
 <pre>
 <code>
-% mkdir ~/.zeesh/bundles/*desired name*
-% mkdir ~/.zeesh/bundles/*desired name*/themes
-% mkdir ~/.zeesh/bundles/*desired name*/lib
-% mkdir ~/.zeesh/bundles/*desired name*/plugins
+% mkdir ~/.zeesh/bundles/desired_name
+% mkdir ~/.zeesh/bundles/desired_name/themes
+% mkdir ~/.zeesh/bundles/desired_name/lib
+% mkdir ~/.zeesh/bundles/desired_name/plugins
 </code>
 </pre>
 
@@ -79,8 +79,8 @@ A simple configuration of an autoexec.zsh file would look like this:
 <pre>
 <code>
 # autoexec.zsh
-zeesh_bundler "bundle_1" "plugin_1 plugin_2" "theme"
-zeesh_bundler "bundle_3" "plugin_2 plugin_8" ""
+zeesh_bundler -b bundle_1 -p "plugin_1 plugin_2" -t theme -l
+zeesh_bundler -b bundle_3 -p "plugin_2 plugin_8" -l
 
 custom_function
 other_function
