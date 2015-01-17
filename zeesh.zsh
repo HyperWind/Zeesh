@@ -56,6 +56,4 @@ zeesh_init() {
 
 	zeesh_message "welcome to zeesh"
 	printf "\n"
-
-	wait
 }

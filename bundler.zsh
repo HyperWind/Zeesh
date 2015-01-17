@@ -51,15 +51,21 @@ load_themes() {
 
 load_plugins() {
 	zeesh_debug "loading plugins"
-	plugins=("${(ps: :)${1}}") 
-    
+	
+	if [[ "$1" != "*" ]]; then
+		plugins=("${(ps: :)${1}}") 
+   	else
+		plugins=($BUNDLE/plugins/*)
+	fi
+ 
 	if [[ ${#plugins[@]} > 0 ]]; then
 		for plugin in $plugins; do
+		plugin="$plugin:t"
 		zeesh_debug "loading plugin $plugin"
 			if [[ -f "$BUNDLE/plugins/$plugin/$plugin.plugin.zsh" || -f "$BUNDLE/plugins/$plugin/_$plugin" ]]; then
 				fpath=($BUNDLE/plugins/$plugin $fpath)
 				if [[ -f "$BUNDLE/plugins/$plugin/$plugin.plugin.zsh" ]]; then
-					source $BUNDLE/plugins/$plugin/$plugin.plugin.zsh
+					source "$BUNDLE/plugins/$plugin/$plugin.plugin.zsh"
 				fi
 			else
 				zeesh_warning "$BUNDLE:t - $plugin isn't zeesh/oh-my-zshell compatable or wasn't found"
@@ -80,7 +86,7 @@ load_libs() {
 	if [[ ${#libs[@]} > 0 ]]; then
 		for lib in $libs; do
 			zeesh_debug "loading lib $lib:t"
-			source $lib
+			source "$lib"
 		done
 			zeesh_message "$BUNDLE:t - libs loaded"
 	else
