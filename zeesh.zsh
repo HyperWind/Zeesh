@@ -10,27 +10,19 @@
 # Logging and Error/Warning issuing 
 
 zeesh_error() {
-	if [[ $ZEESH_VERBOSITY -gt 0 ]]; then
-		printf "\e[1;31m[ ERROR ]\e[0m $1. \n" 1>&2
-	fi
+	[[ $ZEESH_VERBOSITY -gt 0 ]] && printf "\e[1;31m[ ERROR ]\e[0m $1. \n" 1>&2
 }
 
 zeesh_warning() {
-	if [[ $ZEESH_VERBOSITY -gt 1 ]]; then
-		printf "\e[1;33m[ WARNING ]\e[0m $1. \n" 1>&2
-	fi
+	[[ $ZEESH_VERBOSITY -gt 1 ]] && printf "\e[1;33m[ WARNING ]\e[0m $1. \n" 1>&2
 }
 
 zeesh_debug() {
-	if [[ $ZEESH_VERBOSITY -gt 2 ]]; then
-		printf "\e[1;36m[ DEBUG ]\e[0m $1. \n" 1>&2
-	fi
+	[[ $ZEESH_VERBOSITY -gt 2 ]] && printf "\e[1;36m[ DEBUG ]\e[0m $1. \n" 1>&2
 }
 
 zeesh_message() {
-	if [[ $ZEESH_VERBOSITY -gt 1 ]]; then
-		printf "\e[1;32m[ Zeesh ]\e[0m $1. \n" 1>&2
-	fi
+	[[ $ZEESH_VERBOSITY -gt 1 ]] && printf "\e[1;32m[ Zeesh ]\e[0m $1. \n" 1>&2
 }
 
 # initialising Zeesh
@@ -47,24 +39,20 @@ zeesh_init() {
 	export readonly ROOT_DIR=$1
 
 	zeesh_message "loading zeesh in $ROOT_DIR"	
-	if [[ "$ROOT_DIR" != "$HOME/.zeesh" ]]; then
-		zeesh_warning "it's advised that you set up $HOME/.zeesh as your zeesh root"
-	fi
+	[[ "$ROOT_DIR" != "$HOME/.zeesh" ]] && zeesh_warning "it's advised that you set up $HOME/.zeesh as your zeesh root"
 	
 	typeset -Ag zsh_themes
 
 	# loading and running compinit
 
-        autoload -U compinit
-        compinit -id "/tmp/.zcompdump"
+	autoload -U compinit
+	compinit -id "/tmp/.zcompdump"
 	
 	# starting externals
 	
 	source "$ROOT_DIR/bundler.zsh"
 
-	if [[ -e "$ROOT_DIR/autoexec.zsh" ]]; then
-		source "$ROOT_DIR/autoexec.zsh"
-	fi
+	[[ -e "$ROOT_DIR/autoexec.zsh" ]] && source "$ROOT_DIR/autoexec.zsh"
 
 	zeesh_message "welcome to zeesh"
 	printf "\n"

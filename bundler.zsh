@@ -27,17 +27,16 @@ Other details:
 load_themes() {
 	zeesh_debug "setting theme"
 
-	if [[ $1 == "random" ]]; then
+	if [[ "$1" == "random" ]]; then
 		zeesh_debug "using random theme"
 		themes=($BUNDLE/themes/*.zsh-theme)
 		local n=${#themes[@]}
 		n=$RANDOM%$n+1
 		local rand_theme=$themes[$n]
-		zeesh_debug "$themes[$n]"
 		zeesh_message "$BUNDLE:t - loaded random theme $rand_theme"
 		source "$rand_theme"
 	else
-		if [[ ! -z $1 ]] && [[ -e "$BUNDLE/themes/$1.zsh-theme" ]]; then
+		if [[ ! -z $1 && -e "$BUNDLE/themes/$1.zsh-theme" ]]; then
 			zeesh_debug "file $1.zsh-theme found"
 			source "$BUNDLE/themes/$1.zsh-theme"
 			zeesh_message "$BUNDLE:t - loaded theme $1"
@@ -92,9 +91,7 @@ load_libs() {
 #starts the bundler
 
 zeesh_bundler() {
-
 	args=("$@")
-
 	zeesh_debug "$args[*]"
 
 	[[ -z "$args[*]" ]] && zeesh_error "zeesh_bundler -h for help"
