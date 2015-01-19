@@ -1,5 +1,6 @@
 <h1>Zeesh</h1>
-<b>A bundle based zshell framework.</b>
+
+<b>A bundle based zshell framework for sane people.</b>
 
 <h2>Installation</h2>
 
@@ -45,7 +46,7 @@ To create a bundle make a new directory in the bundles folder (not name specific
 </code>
 </pre>
 
-or make a init.zsh in your bundle and configure everything externally. <a href="https://github.com/HyperWind/oh-my-zeesh">(an example)</a>
+or make an init.zsh in your bundle and configure everything externally. <a href="https://github.com/HyperWind/oh-my-zeesh">(an example)</a>
 
 To load a bundle use this command:
 
