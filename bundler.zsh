@@ -18,7 +18,7 @@ Other details:
     If you pass \"random\" as an argument to the theme option, it'll select a random theme from that bundle.
     The configs option doesn't take any arguments.
     The plugins option takes a string as an argument.
-    Give \"all\" as an argument in the plugins option to load all the plugins from that bundle."
+    Give \"all\" as an argument to the plugins option to load all the plugins from that bundle."
 }
 
 # initializes a custom bundle
