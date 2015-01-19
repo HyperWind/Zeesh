@@ -15,10 +15,10 @@ Options:
     -c, --configs   Loads configs form that bundle.
 
 Other details:
-    If you pass 'random' as an argument to the theme option, it'll select a random theme from that bundle.
+    If you pass \"random\" as an argument to the theme option, it'll select a random theme from that bundle.
     The configs option doesn't take any arguments.
     The plugins option takes a string as an argument.
-    Give all as an argument in the plugins option to load everything."
+    Give \"all\" as an argument in the plugins option to load all the plugins from that bundle."
 }
 
 # initializes a custom bundle
@@ -87,16 +87,16 @@ load_plugins() {
 
 load_configs() {
 	zeesh_debug "loading configs"
-	libs=($BUNDLE/$1/*.zsh)
+	configs=($BUNDLE/$1/*.zsh)
 
-	if [[ ${#libs[@]} > 0 ]]; then
-		for lib in $libs; do
-			zeesh_debug "loading lib $lib:t"
-			source "$lib"
+	if [[ ${#configs[@]} > 0 ]]; then
+		for config in $configs; do
+			zeesh_debug "loading lib $config:t"
+			source "$config"
 		done
-			zeesh_message "$BUNDLE:t - libs loaded"
+			zeesh_message "$BUNDLE:t - configs loaded"
 	else
-		zeesh_warning "$BUNDLE:t - no libs found"
+		zeesh_warning "$BUNDLE:t - no configs found"
 	fi
 }
 
@@ -107,9 +107,9 @@ zeesh_bundler() {
 	zeesh_debug "$args[*]"
 
 	[[ -z "$args[*]" ]] && bundler_help
-	[[ -z "$libs" ]] || libs=""
-    [[ -z "$plugins" ]] || plugins=""
-    [[ -z "$theme" ]] || theme=""
+	[[ $configs != 0 ]] && configs=0
+    [[ $plugins != 0 ]] && plugins=0
+    [[ $theme != 0 ]] && theme=0
 	
 	for ((n=1; n<${#args}+1; n++)); do
 		case $args[$n] in
@@ -131,22 +131,19 @@ zeesh_bundler() {
 			--plugins|-p)	# loads the plugins
 				plugins=$args[$n+1]
 				;;
-			--configs|-c)	# loads the libs
-				configs="true"
+			--configs|-c)	# loads the configs
+				configs=1
 				;;
 		esac	
 	done
 
-	zeesh_debug "$plugins"
-	zeesh_debug "$theme"
-
 	if [[ -e "$BUNDLE/init.zsh" ]]; then
 		zeesh_debug "init at bundle $BUNDLE:t found"
-		load_custom_bundle $confgis $plugins $theme
+		load_custom_bundle $configs $plugins $theme
 	else
 		zeesh_debug "using default settings"
-		[[ -z "$libs" ]] || load_configs configs
-		[[ -z "$plugins" ]] || load_plugins $plugins plugins
-		[[ -z "$theme" ]] || load_themes $theme themes
+		[[ $configs == 0 ]] || load_configs configs
+		[[ $plugins == 0 ]] || load_plugins $plugins plugins
+		[[ $theme == 0 ]] || load_themes $theme themes
 	fi
 }
