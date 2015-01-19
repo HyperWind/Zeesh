@@ -18,7 +18,7 @@ Other details:
     If you pass 'random' as an argument to the theme option, it'll select a random theme from that bundle.
     The libs option doesn't take any arguments.
     The plugins option takes a string as an argument.
-    Put an * in the plugins option to load everything."
+    Give all as an argument in the plugins option to load everything."
 }
 
 # loads themes
@@ -40,8 +40,7 @@ load_themes() {
 			source "$BUNDLE/themes/$1.zsh-theme"
 			zeesh_message "$BUNDLE:t - loaded theme $1"
 		else
-			zeesh_warning "$BUNDLE:t - theme $1 not found, using default values"
-			PROMPT="%~ > "
+			zeesh_warning "$BUNDLE:t - theme $1 not found."
 		fi
 	fi
 }
@@ -51,7 +50,7 @@ load_themes() {
 load_plugins() {
 	zeesh_debug "loading plugins"
 	
-	if [[ "$1" != "*" ]]; then
+	if [[ "$1" != "all" ]]; then
 		plugins=("${(ps: :)${1}}") 
    	else
 		plugins=($BUNDLE/plugins/*)
@@ -105,7 +104,6 @@ zeesh_bundler() {
     [[ ! -z "$theme" ]] && theme=""
 	
 	for ((n=1; n<${#args}+1; n++)); do
-		zeesh_debug "$args[$n]"
 		case $args[$n] in
 			-h)
 				bundler_help
