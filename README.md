@@ -120,6 +120,7 @@ Zeesh is compatible with Oh-My-Zsh, if you want to use omz's themes/plugins/libs
 <h2>To Be Implamented</h2>
 
 <ul>
+<li>A bundle unmounting system.</li>
 <li>An expansive default bundle.</li>
 </ul>
 
