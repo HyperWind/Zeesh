@@ -35,7 +35,6 @@ load_themes() {
 	zeesh_debug "setting theme"
 
 	if [[ "$1" == "random" ]]; then
-		zeesh_debug "using random theme"
 		themes=($BUNDLE/$2/*.zsh-theme)
 		local n=${#themes[@]}
 		n=$RANDOM%$n+1
@@ -44,9 +43,8 @@ load_themes() {
 		source "$rand_theme"
 	else
 		if [[ ! -z $1 && -e "$BUNDLE/$2/$1.zsh-theme" ]]; then
-			zeesh_debug "file $1.zsh-theme found"
 			source "$BUNDLE/$2/$1.zsh-theme"
-			zeesh_message "$BUNDLE:t - loaded theme $1"
+			zeesh_debug "$BUNDLE:t - loaded theme $1"
 		else
 			zeesh_warning "$BUNDLE:t - theme $1 not found."
 		fi
@@ -77,7 +75,7 @@ load_plugins() {
 				zeesh_warning "$BUNDLE:t - $plugin isn't zeesh/oh-my-zshell compatable or wasn't found"
 			fi
 		done
-			zeesh_message "$BUNDLE:t - plugins loaded"
+			zeesh_debug "$BUNDLE:t - plugins loaded"
 	else
 		zeesh_warning "$BUNDLE:t - no plugins found"
 	fi
@@ -94,7 +92,7 @@ load_configs() {
 			zeesh_debug "loading lib $config:t"
 			source "$config"
 		done
-			zeesh_message "$BUNDLE:t - configs loaded"
+			zeesh_debug "$BUNDLE:t - configs loaded"
 	else
 		zeesh_warning "$BUNDLE:t - no configs found"
 	fi
@@ -102,7 +100,7 @@ load_configs() {
 
 #starts the bundler
 
-zeesh_bundler() {
+zbn() {
 	args=("$@")
 	zeesh_debug "$args[*]"
 

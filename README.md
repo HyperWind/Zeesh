@@ -52,17 +52,17 @@ To load a bundle use this command:
 
 <pre>
 <code>
-zeesh_bundler -b bundle_name -p "plugins" -t theme -c
+zbn -b bundle_name -p "plugins" -t theme -c
 </code>
 </pre>
 
 You can also place this command into autoexec.zsh for it to be executed automatically.
 
-More on the usage of zeesh_bundler can be found using this command:
+More on the usage of the bundler can be found using this command:
 
 <pre>
 <code>
-zeesh_bundler -h
+zbn -h
 </code>
 </pre>
 
@@ -83,8 +83,8 @@ A simple configuration of an autoexec.zsh file would look like this:
 <pre>
 <code>
 # autoexec.zsh
-zeesh_bundler -b bundle_1 -p "plugin_1 plugin_2" -t theme -c
-zeesh_bundler -b bundle_3 -p "plugin_2 plugin_8" -c
+zbn -b bundle_1 -p "plugin_1 plugin_2" -t theme -c
+zbn -b bundle_3 -p "plugin_2 plugin_8" -c
 
 custom_function
 other_function
