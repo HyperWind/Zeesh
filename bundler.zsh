@@ -5,7 +5,7 @@
 bundler_help() {
 	zeesh_message "zeesh bundler help"
 	printf "Usage:
-    zeesh_bunder [-option] [arguments]
+	zeesh_bunder [-option] [arguments]
 
 Options:
     -h              Prints this message.
@@ -106,8 +106,8 @@ zbn() {
 
 	[[ -z "$args[*]" ]] && bundler_help
 	[[ $configs != 0 ]] && configs=0
-    [[ $plugins != 0 ]] && plugins=0
-    [[ $theme != 0 ]] && theme=0
+	[[ $plugins != 0 ]] && plugins=0
+	[[ $theme != 0 ]] && theme=0
 	
 	for ((n=1; n<${#args}+1; n++)); do
 		case $args[$n] in
