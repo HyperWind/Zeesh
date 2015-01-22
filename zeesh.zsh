@@ -5,7 +5,7 @@
 # 2 - Errors, warnings and zeesh messanges; (RECOMMENDED)
 # 3 - Debugging and developer options;
 
-[[ -z "$ZEESH_VERBOSITY" ]] && readonly ZEESH_VERBOSITY=2 # default 2.
+[[ -z "$ZEESH_VERBOSITY" ]] && readonly ZEESH_VERBOSITY=3 # default 2.
 
 # Logging and Error/Warning issuing 
 
