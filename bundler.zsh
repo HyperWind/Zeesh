@@ -5,11 +5,7 @@
 bundler_help() {
 	zeesh_message "zeesh bundler help"
 	printf "Usage:
-<<<<<<< HEAD
-	zeesh_bunder [-option] [arguments]
-=======
-zeesh_bunder [-option] [arguments]
->>>>>>> dfc9261b0b08ac4bdc4410baf6e8924f6e5090f9
+    zeesh_bunder [-option] [arguments]
 
 Options:
     -h              Prints this message.
