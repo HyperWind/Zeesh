@@ -2,6 +2,13 @@
 
 <b>A bundle based zshell framework for sane people.</b>
 
+This is the <em>dev</em> branch, new features coming to zeesh in the future are tested here, use at your own risk!
+
+<big>Currently working on:</big>
+<ol>
+<li>The bundle unmounting/unloading system.</li>
+</ol>
+
 <h2>Installation</h2>
 
 Clone zeesh into .zeesh (or any desired folder, though that requires some extra configuration) or add it as a git submodule.
@@ -17,7 +24,7 @@ After that add these following lines into your .zshrc file:
 <pre>
 <code>
 source ~/.zeesh/zeesh.zsh
-zeesh_init ~/.zeesh
+zbn ~/.zeesh
 </code>
 </pre>
 
@@ -52,7 +59,7 @@ To load a bundle use this command:
 
 <pre>
 <code>
-zeesh_bundler -b bundle_name -p "plugins" -t theme -c
+zbn -b bundle_name -p "plugins" -t theme -c
 </code>
 </pre>
 
@@ -62,7 +69,7 @@ More on the usage of zeesh_bundler can be found using this command:
 
 <pre>
 <code>
-zeesh_bundler -h
+zbn -h
 </code>
 </pre>
 
@@ -83,8 +90,8 @@ A simple configuration of an autoexec.zsh file would look like this:
 <pre>
 <code>
 # autoexec.zsh
-zeesh_bundler -b bundle_1 -p "plugin_1 plugin_2" -t theme -c
-zeesh_bundler -b bundle_3 -p "plugin_2 plugin_8" -c
+zbn -b bundle_1 -p "plugin_1 plugin_2" -t theme -c
+zbn -b bundle_3 -p "plugin_2 plugin_8" -c
 
 custom_function
 other_function
