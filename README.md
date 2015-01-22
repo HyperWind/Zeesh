@@ -2,7 +2,7 @@
 
 <b>A bundle based zshell framework for sane people.</b>
 
-This is the <em>dev</em> branch, new features coming to zeesh in the future are tested here, use at your own risk!
+This is the <em>dev</em> branch, features coming to zeesh in the future are tested here, use at your own risk!
 
 <big>Currently working on:</big>
 <ol>
