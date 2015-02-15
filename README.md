@@ -4,7 +4,7 @@
 
 <h2>Installation</h2>
 
-Clone zeesh into .zeesh (or any desired folder, though that requires some extra configuration) or add it as a git submodule.
+Clone zeesh into .zeesh (or any desired folder, though that might require some extra configuration) or add it as a git submodule.
 
 <pre>
 <code>
@@ -68,7 +68,7 @@ zbn -h
 
 <h2>autoexec.zsh</h2>
 
-autoexec.zsh is part of zeesh's core, everything in it is executed after loading other components. It's mainly used to load the bundles and other configurations. 
+autoexec.zsh is a part of zeesh's core, everything in it is executed after loading other components. It's mainly used to load the bundles and other configurations. 
 Every autoexec.zsh file is personal, so they shuold remain on your machine.
 Also, zeesh doesn't arrive with an autoexec.zsh file, you should make one yourself.
 
@@ -114,7 +114,7 @@ Zeesh is compatible with Oh-My-Zsh, if you want to use omz's themes/plugins/libs
 <h2>Known Bugs</h2>
 
 <ul>
-<li>None?</li>
+<li>None? (I really need some people to break this thing)</li>
 </ul>
 
 <h2>To Be Implamented</h2>
