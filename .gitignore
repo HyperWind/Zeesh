@@ -1,5 +1,6 @@
 # Custom files
 autoexec.zsh
+*.swp
 
 # Folders
 bundles/*
