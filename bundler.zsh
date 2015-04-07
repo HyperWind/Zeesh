@@ -122,17 +122,26 @@ zbn() {
 					zeesh_error "bundle $args[$n+1] not found"
 					return 111
 				fi
+				((n++))
 				;;
 			--theme|-t) # sets the theme
 				theme=$args[$n+1]
+				((n++))
 				;;
 			--plugins|-p)	# loads the plugins
 				plugins=$args[$n+1]
+				((n++))
 				;;
 			--configs|-c)	# loads the configs
 				configs=1
 				;;
-		esac	
+			load)
+				;;
+			*)
+				bundler_help
+				return 110
+				;;
+		esac
 	done
 
 	if [[ -e "$BUNDLE/init.zsh" ]]; then
