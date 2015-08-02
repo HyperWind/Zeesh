@@ -1,5 +1,4 @@
 # zeesh bundler
-
 # bundler help
 
 bundler_help() {
@@ -46,7 +45,7 @@ load_themes() {
 			source "$BUNDLE/$2/$1.zsh-theme"
 			zeesh_debug "$BUNDLE:t - loaded theme $1"
 		else
-			zeesh_warning "$BUNDLE:t - theme $1 not found."
+			zeesh_warning "$BUNDLE:t - theme $1 not found"
 		fi
 	fi
 }
